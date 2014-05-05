@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="de.kijok.pgadbuddiz"
+      version="0.1.0">
+    <name>PGAdBuddiz</name>
+    <description>PhoneGap AdBuddiz Plugin</description>
+    <license>MIT</license>
+    <keywords>phonegap,adbuddiz</keywords>
+
+
+    <js-module src="www/pgadbuddiz.js" name="PGAdBuddiz">
+        <clobbers target="window.pgadbuddiz" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PGAdBuddiz">
+                <param name="android-package" value="de.kijok.pgadbuddiz.PGAdBuddiz"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/PGAdBuddiz.java" target-dir="src/de/kijok/pgadbuddiz" />      
+     </platform>          
+</plugin>
