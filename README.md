@@ -30,6 +30,30 @@ At the command line type:
 Included is only the Android version!
 
 #How to use
+The Java part:
+
+Copy the AdBuddiz-xxx.jar file into you libs directory located under APPNAME/platforms/android/libs.
+
+Include in your main Java file:
+
+``
+
+	import com.purplebrain.adbuddiz.sdk.AdBuddiz;
+
+	...
+
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		...
+		AdBuddiz.setPublisherKey("##YOUR_PUBLISHER_KEY###");
+		AdBuddiz.cacheAds(this); // this = current Activity
+		...
+	}
+``
+
+The Javascript part:
+
 In you javascript file there is an object ``window.pgadbuddiz`` available.
 
 It has a function ``showAd``, that shows an ad from AdBuddiz. That all!
