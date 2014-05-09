@@ -46,11 +46,24 @@ Include in your main Java file:
 	{
 		super.onCreate(savedInstanceState);
 		...
-		AdBuddiz.setPublisherKey("##YOUR_PUBLISHER_KEY###");
+		AdBuddiz.setPublisherKey("YOUR_PUBLISHER_KEY");
 		AdBuddiz.cacheAds(this); // this = current Activity
 		...
 	}
 ``
+
+If you want to turn on the test-mode or modify the log level, you should insert your code just before the cacheAds function.
+
+``
+
+	...
+	AdBuddiz.setTestModeActive();
+	AdBuddiz.setLogLevel(AdBuddizLogLevel.Info);    // or Error, Silent
+	AdBuddiz.cacheAds(this); // this = current Activity
+	...
+	
+``
+
 
 The Javascript part:
 
