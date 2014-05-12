@@ -30,13 +30,11 @@ At the command line type:
 Included is only the Android version!
 
 #How to use
-The Java part:
+**The Java part:**
 
 Copy the AdBuddiz-xxx.jar file into you libs directory located under APPNAME/platforms/android/libs.
 
 Include in your main Java file:
-
-``
 
 	import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
@@ -50,27 +48,39 @@ Include in your main Java file:
 		AdBuddiz.cacheAds(this); // this = current Activity
 		...
 	}
-``
 
 If you want to turn on the test-mode or modify the log level, you should insert your code just before the cacheAds function.
 
-``
 
+
+	import com.purplebrain.adbuddiz.sdk.AdBuddizLogLevel;
+	...
 	...
 	AdBuddiz.setTestModeActive();
 	AdBuddiz.setLogLevel(AdBuddizLogLevel.Info);    // or Error, Silent
 	AdBuddiz.cacheAds(this); // this = current Activity
 	...
 	
-``
 
 
-The Javascript part:
+
+**The Javascript part:**
 
 In you javascript file there is an object ``window.pgadbuddiz`` available.
 
-It has a function ``showAd``, that shows an ad from AdBuddiz. That all!
+It has a function ``showAd(successCallback, errorCallback)``, that shows an ad from AdBuddiz. 
+Here is an availablity check included, if there is no ad available the function calls the error callback with the string "ad\_not\_ready". If all is ok, the success callback is called.
 
-Something like this: ``window.pgadbuddiz.showAd();``
+That's all!
 
-Other functions like logs or availability checks are not implemented.
+Something like this: ``window.pgadbuddiz.showAd(successCallback, errorCallback);``
+
+You can also define a delegate for the Adbuddiz calls. The call works this way: ``window.pgadbiddiz.createDelegate(successCallback, errorCallback)``
+Error callback will be called if the delegate can not be instantiated.
+Other responses from Adbuddiz will be send within the success callback as string. Possible values are:
+
+- ad\_cached - Adbuddiz call: didCacheAd
+- ad\_displayed - Adbuddiz call: didShowAd
+- no\_ad\_displayed - Adbuddiz call: didFailToShowAd
+- ad\_clicked - Adbuddiz call: didClick
+- ad\_hide - Adbuddiz call: didHideAd
